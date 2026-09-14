@@ -9,7 +9,7 @@ public class MergeTwoSortedArrays {
 
     static int[] merge(int[] arr1, int[] arr2) {
 
-
+        return arr1;
     }
 
 
@@ -31,7 +31,7 @@ public class MergeTwoSortedArrays {
             arr2[i] = sc.nextInt();
         }
 
-        System.out.println(Arrays.toString(merge(arr1, arr2)));
+//        System.out.println(Arrays.toString(merge(arr1, arr2)));
 
     }
 }
