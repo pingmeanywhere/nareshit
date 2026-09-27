@@ -6,7 +6,8 @@ public class ToStringMethod {
     static void main(String[] args) {
 
         Student student = new Student("Aquib", 23);
-        System.out.println(student);
+        System.out.println(student.toString()); // explicit calling toString()
+        System.out.println(student);            // implicit calling by jvm
 
     }
 
