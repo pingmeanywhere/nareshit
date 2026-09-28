@@ -21,7 +21,7 @@ public class SearchInRotatedSorted {
             }
             // check if right is sorted
             else {
-                if (target > nums[start] && target <= nums[end]) {
+                if (target > nums[mid] && target <= nums[end]) {
                     start = mid + 1;
                 } else {
                     end = mid - 1;

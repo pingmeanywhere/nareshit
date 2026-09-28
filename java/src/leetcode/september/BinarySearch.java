@@ -1,23 +1,23 @@
-package dsa.binarysearch;
+package leetcode.september;
 
 public class BinarySearch {
 
 
     static int search(int[] nums, int target) {
-        int left = 0;
-        int right = nums.length - 1;
+        int start = 0;
+        int end = nums.length - 1;
 
-        while (left <= right) {
-            int mid = (left + right) / 2;
+        while (start <= end) {
+            int mid = (start + end) / 2;
 
             if (nums[mid] == target) {
                 return mid;
             }
 
             if (nums[mid] < target) {
-                left = mid + 1;
+                start = mid + 1;
             } else {
-                right = mid - 1;
+                end = mid - 1;
             }
 
         }
@@ -26,6 +26,6 @@ public class BinarySearch {
     }
 
     static void main(String[] args) {
-        System.out.println(search(new int[]{0, 1, 2, 3, 4, 5, 6, 7}, 5));
+
     }
 }
