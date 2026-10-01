@@ -1,4 +1,4 @@
-package leetcode.september;
+package leetcode.october;
 
 public class SubarraySumEqualsK {
 
@@ -13,7 +13,6 @@ public class SubarraySumEqualsK {
                 sum = sum + nums[j];
                 if (sum == k) {
                     count++;
-                    break;
                 }
 
             }
