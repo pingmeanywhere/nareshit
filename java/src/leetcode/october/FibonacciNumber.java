@@ -1,16 +1,16 @@
-package leetcode.august;
+package leetcode.october;
 
 import java.util.Arrays;
 
-public class ClimbingStairs {
+public class FibonacciNumber {
 
-    public static int solve(int n, int [] count) {
+    public static int solve(int n, int[] count) {
 
-        if (n == 1 || n == 2) {
+        if (n == 0 || n == 1) {
             return n;
         }
 
-        if(count[n] != -1) {
+        if (count[n] != -1) {
             return count[n];
         }
 
@@ -19,7 +19,7 @@ public class ClimbingStairs {
         return count[n];
     }
 
-    public static int climbStairs(int n) {
+    public static int fib(int n) {
         int[] count = new int[n + 1];
         Arrays.fill(count, -1);
 
@@ -28,7 +28,6 @@ public class ClimbingStairs {
 
 
     static void main(String[] args) {
-        System.out.println(climbStairs(45));
-
+        System.out.println(fib(45));
     }
 }
