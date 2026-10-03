@@ -1,4 +1,4 @@
-package leetcode.august;
+package leetcode.october;
 
 import java.util.HashMap;
 
@@ -9,14 +9,12 @@ public class MajorityElement {
 
         HashMap<Integer, Integer> count = new HashMap<>();
 
-        for (int i = 0; i < nums.length; i++) {
+        for (int num : nums) {
+            count.put(num, count.getOrDefault(num, 0) + 1);
 
-            count.put(nums[i], count.getOrDefault(nums[i], 0) + 1);
-
-            if (count.getOrDefault(nums[i], 0) > nums.length / 2) {
-                return nums[i];
+            if (count.getOrDefault(num, 0) > nums.length / 2) {
+                return num;
             }
-
         }
 
         return -1;
