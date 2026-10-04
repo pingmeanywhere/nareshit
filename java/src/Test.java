@@ -2,9 +2,7 @@ public class Test {
 
     static void main(String[] args) {
 
-        String s = "hi";
-        s.concat("hello");
-        System.out.println(s.length());
+        System.out.println(10 / 3.0);
 
 
     }
