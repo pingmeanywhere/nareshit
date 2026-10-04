@@ -2,7 +2,9 @@ public class Test {
 
     static void main(String[] args) {
 
-        Dog dog = new Dog("Sheru", 6);
+        String s = "hi";
+        s.concat("hello");
+        System.out.println(s.length());
 
 
     }
