@@ -2,7 +2,8 @@ public class Test {
 
     static void main(String[] args) {
 
-        System.out.println(10 / 3.0);
+        String str = " Java ";
+        System.out.println(str.strip().charAt(0));
 
 
     }
