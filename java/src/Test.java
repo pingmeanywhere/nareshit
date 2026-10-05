@@ -2,8 +2,11 @@ public class Test {
 
     static void main(String[] args) {
 
-        String str = " Java ";
-        System.out.println(str.strip().charAt(0));
+        int k = 3;
+        int r = k++ * ++k / k--;
+
+        IO.println(k);
+        IO.println(r);
 
 
     }
