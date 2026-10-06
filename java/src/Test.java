@@ -1,12 +1,17 @@
+import java.rmi.ServerError;
+
 public class Test {
 
     static void main(String[] args) {
 
-        int k = 3;
-        int r = k++ * ++k / k--;
+        int [] arr = {1, 2, 3};
 
-        IO.println(k);
-        IO.println(r);
+
+        try {
+            System.out.println("Element : " + arr[3]);
+        } catch (ArrayIndexOutOfBoundsException error) {
+            System.out.println("Error : " + error.getMessage());
+        }
 
 
     }
