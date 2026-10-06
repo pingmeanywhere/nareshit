@@ -19,16 +19,20 @@ public class UniversityStudentProfileSystem {
             System.out.println("Invalid input");
             return;
         }
-
+        // studentprofile.adddress : XO1
         StudentProfile studentProfile = new StudentProfile(studentId,
-                studentName, new Address(city, country), gpa);
+                studentName, new Address(city, country), gpa); // X01
         System.out.println("Original Student: " + studentProfile);
+
+        // cloneStudent.address : X01
         StudentProfile cloneStudent = (StudentProfile) studentProfile.clone();
 
         cloneStudent.address.city = "Milan";
         cloneStudent.gpa = cloneStudent.gpa + 0.5;
 
         System.out.println("Cloned Student: " + cloneStudent);
+
+        System.out.println("Now original : ->" + studentProfile);
 
     }
 }
@@ -69,7 +73,7 @@ class StudentProfile implements Cloneable {
 
     public Object clone() throws CloneNotSupportedException {
         StudentProfile copy = (StudentProfile) super.clone();
-        copy.address = (Address) address.clone();
+//        copy.address = (Address) address.clone();
         return copy;
     }
 
