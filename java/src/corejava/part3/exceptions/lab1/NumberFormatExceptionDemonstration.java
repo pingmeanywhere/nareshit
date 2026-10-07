@@ -1,4 +1,4 @@
-package corejava.part3.exceptions;
+package corejava.part3.exceptions.lab1;
 
 import java.util.Scanner;
 
