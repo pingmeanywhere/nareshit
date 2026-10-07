@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class InternationalOnlineExamination {
 
-    static void main(String[] args) {
+    static void main(String[] args) throws CloneNotSupportedException {
         Scanner sc = new Scanner(System.in);
 
         String studentId = sc.nextLine();
@@ -12,7 +12,7 @@ public class InternationalOnlineExamination {
         int obtainedMarks = Integer.parseInt(sc.nextLine());
         String attemptId = sc.nextLine();
 
-        String newStudentId = sc.nextLine();
+        String newStudentName = sc.nextLine();
         int newObtainedMarks = Integer.parseInt(sc.nextLine());
 
         ExamAttempt examAttempt = new ExamAttempt(attemptId,
@@ -21,8 +21,11 @@ public class InternationalOnlineExamination {
         System.out.println("Original Exam Attempt");
         System.out.println(examAttempt);
 
+        ExamAttempt cloneAttempt = examAttempt.clone();
+        cloneAttempt.studentInfo.studentName = newStudentName;
+        cloneAttempt.examResult.obtainedMarks = newObtainedMarks;
         System.out.println("\nCloned Exam Attempt");
-        System.out.println();
+        System.out.println(cloneAttempt);
 
     }
 }
@@ -80,6 +83,7 @@ class ExamAttempt implements Cloneable {
     }
 
     public String toString() {
+
         return "Attempt ID: " + attemptId + '\n' + studentInfo + '\n' + examResult;
     }
 }
