@@ -1,47 +1,32 @@
-import java.rmi.ServerError;
+import java.sql.SQLException;
 
 public class Test {
 
     static void main(String[] args) {
-
-        int [] arr = {1, 2, 3};
-
-
-        try {
-            System.out.println("Element : " + arr[3]);
-        } catch (ArrayIndexOutOfBoundsException error) {
-            System.out.println("Error : " + error.getMessage());
-        }
-
-
+        Object o  = null;
+        System.out.println(o.toString());
     }
 }
 
-class Animal {
-    private String name;
-    private int age;
 
-    public Animal(String name, int age) {
-        setName(name);
-        setAge(age);
+
+class A {
+    private  void printHi () {
+        System.out.println("Hi");
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
+    public void call() {
+        printHi();
     }
 }
 
-class Dog extends Animal {
-    public Dog(String name, int age) {
-        super(name, age);
+class  B extends  A {
+
+    public void printHi() {
+        System.out.println("HELLO");
     }
 
-    public void setAge(int age) {
-        System.out.println("Exploited");
-        super.setAge(age);
+    public void call() {
+        printHi();
     }
 }
