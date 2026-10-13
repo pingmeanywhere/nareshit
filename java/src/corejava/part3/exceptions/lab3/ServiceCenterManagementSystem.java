@@ -1,38 +1,69 @@
 package corejava.part3.exceptions.lab3;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class ServiceCenterManagementSystem {
 
     static void main(String[] args) {
 
-        /*
-        1
-201
-Rahul
-2
-201
-Repair
-3
-201
-1500
-4
-         */
-
         Scanner sc = new Scanner(System.in);
 
-        int choice1 = Integer.parseInt(sc.nextLine());
-        int custId = Integer.parseInt(sc.nextLine());
-        String custName = sc.nextLine();
+        try {
+            while (true) {
 
-        int choice2 = Integer.parseInt(sc.nextLine());
-        custId = Integer.parseInt(sc.nextLine());
-        String service = sc.nextLine();
+                // Registered user
+                boolean onlyInput = true;
+                int choice = Integer.parseInt(sc.nextLine().trim());
+                int custId;
+                if (choice == 1) {
+                    custId = Integer.parseInt(sc.nextLine().trim());
+                    String custName = sc.nextLine().trim();
+                    System.out.println("Customer registered successfully ");
+                }
 
-//        int choice3 = Integer.parseInt(sc.nextLine());
-//        custId = Integer.parseInt(sc.nextLine());
-//        String service = sc.nextLine();
+                // Choose service type
+                choice = Integer.parseInt(sc.nextLine().trim());
+                if (choice == 2) {
+                    int newId = Integer.parseInt(sc.nextLine().trim());
+                    String serviceType = sc.nextLine().trim();
+                    if (!serviceType.equals("Repair")) {
+                        throw new InputMismatchException("Invalid service type");
+                    }
 
+                    System.out.println("Service booked: " + serviceType);
+                    onlyInput = false;
+                }
+
+
+                // Generate bill
+                if (!onlyInput) {
+                    choice = Integer.parseInt(sc.nextLine().trim());
+                }
+                if (choice == 3) {
+                    int newId = Integer.parseInt(sc.nextLine().trim());
+                    int amount = Integer.parseInt(sc.nextLine().trim());
+
+                    if (amount < 0) {
+                        throw new InputMismatchException("Invalid service cost");
+                    }
+
+                    System.out.println("Service bill generated: " + amount);
+                    onlyInput = false;
+                }
+
+
+                // Exit from the loop
+                choice = Integer.parseInt(sc.nextLine().trim());
+                if (choice == 4) {
+                    break;
+                }
+            }
+        } catch (InputMismatchException e) {
+            System.out.println(e.getMessage());
+        } finally {
+            System.out.println("Exiting Service Center System");
+        }
 
 
     }
