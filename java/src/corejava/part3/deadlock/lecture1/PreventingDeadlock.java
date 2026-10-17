@@ -35,7 +35,7 @@ class MyThread extends Thread {
         try {
             if (l.tryLock(10, TimeUnit.SECONDS)) {
                 try {
-                    l.lock();
+//                    l.lock();
                     System.out.println(this.getName() + " is acquired the lock");
                     for (int i = 1; i <= 5; i++) {
                         System.out.println(this.getName() + " : " + i);
