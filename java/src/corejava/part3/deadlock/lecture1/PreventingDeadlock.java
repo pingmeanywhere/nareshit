@@ -1,5 +1,6 @@
 package corejava.part3.deadlock.lecture1;
 
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -31,22 +32,26 @@ class MyThread extends Thread {
     }
 
     public void run() {
-        if (l.tryLock()) {
-            try {
-                l.lock();
-                System.out.println(this.getName() + " is acquired the lock");
-                for (int i = 1; i <= 5; i++) {
-                    System.out.println(this.getName() + " : " + i);
-                    Thread.sleep(1000);
+        try {
+            if (l.tryLock(10, TimeUnit.SECONDS)) {
+                try {
+                    l.lock();
+                    System.out.println(this.getName() + " is acquired the lock");
+                    for (int i = 1; i <= 5; i++) {
+                        System.out.println(this.getName() + " : " + i);
+                        Thread.sleep(1000);
+                    }
+                } catch (InterruptedException e) {
+                    System.out.println(e.getMessage());
+                } finally {
+                    System.out.println(this.getName() + " lock released");
+                    l.unlock();
                 }
-            } catch (InterruptedException e) {
-                System.out.println(e.getMessage());
-            } finally {
-                System.out.println(this.getName() + " lock released");
-                l.unlock();
+            } else {
+                System.out.println(this.getName() + " couldn't lock because lock is not released");
             }
-        } else {
-            System.out.println(this.getName() + " couldn't lock because lock is not released");
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
     }
 }
