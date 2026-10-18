@@ -7,7 +7,9 @@ public class OnlineRailwayReservationSystem {
 
     static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        int[] bookedSeats = new int[5];
         while (true) {
+            System.out.println("Before Operation : " + Arrays.toString(bookedSeats));
             System.out.println("Enter 1 for exit or any number to continue");
             int exit = Integer.parseInt(sc.nextLine());
             if (exit == -1) {
@@ -18,13 +20,13 @@ public class OnlineRailwayReservationSystem {
                 System.out.println("Enter BOOK OR CANCEL to choose the operation");
                 String operation = sc.nextLine();
                 try {
-                    RailwayReservation railwayReservation = new RailwayReservation();
-                    System.out.println("Total tickets : " + Arrays.toString(railwayReservation.bookedSeats));
+                    RailwayReservation railwayReservation = new RailwayReservation(bookedSeats, 5);
                     Passenger passenger = new Passenger(railwayReservation, passengerId, operation);
                     passenger.start();
-                    System.out.println("Total tickets : " + Arrays.toString(railwayReservation.bookedSeats));
                 } catch (Exception e) {
                     System.out.println(e.getMessage());
+                } finally {
+                    System.out.println("After Operation : " + Arrays.toString(bookedSeats));
                 }
             }
 
@@ -33,9 +35,13 @@ public class OnlineRailwayReservationSystem {
 }
 
 class RailwayReservation {
-    public int availableSeats = 5;
-    public int[] bookedSeats = {1, 2, 5, 3, 5};
+    public int availableSeats;
+    public int[] bookedSeats;
 
+    public RailwayReservation(int[] bookedSeats, int availableSeats) {
+        this.bookedSeats = bookedSeats;
+        this.availableSeats = availableSeats;
+    }
 
     public synchronized void bookSeat(int passengerId) throws SeatNotFoundException {
 
