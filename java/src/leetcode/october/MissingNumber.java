@@ -6,12 +6,12 @@ public class MissingNumber {
 
         int result = 0;
 
-        for(int i = 0; i < nums.length; i++) {
+        for (int i = 0; i < nums.length; i++) {
             result = result ^ i ^ nums[i];
         }
-        result  = result ^ (nums.length);
+        result = result ^ (nums.length);
 
-        return  result;
+        return result;
     }
 
     static void main(String[] args) {

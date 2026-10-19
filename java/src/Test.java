@@ -3,8 +3,7 @@ import java.sql.SQLException;
 public class Test {
 
     static void main(String[] args) {
-        Object o  = null;
-        System.out.println(o.toString());
+
     }
 }
 
