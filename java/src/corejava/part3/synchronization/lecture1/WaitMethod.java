@@ -30,7 +30,7 @@ class MyThread1 extends Thread {
 
             if (i == 150) {
                 synchronized (this) {
-                    System.out.println("T thread nofigies th4e waiting thread  main");
+                    System.out.println("T thread notifies the waiting thread  main");
                     notify();
                 }
             }
