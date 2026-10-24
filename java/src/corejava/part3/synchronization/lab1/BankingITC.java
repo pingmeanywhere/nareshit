@@ -22,34 +22,25 @@ class Account {
     }
 
 
-    public synchronized void withdraw(int amount) {
-        try {
-            while (this.balance < amount) {
-                System.out.println("Insufficient balance. Please wait for deposit.\n");
-                wait();
-            }
-            this.balance = this.balance - amount;
-            System.out.println("Amount withdrawn: " + amount);
-            System.out.println("Remaining balance: " + this.balance + "\n");
+    public synchronized void withdraw(int amount) throws InterruptedException {
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            notifyAll();
+        while (this.balance < amount) {
+            System.out.println("Insufficient balance. Please wait for deposit.\n");
+            wait();
         }
+        this.balance = this.balance - amount;
+        System.out.println("Amount withdrawn: " + amount);
+        System.out.println("Remaining balance: " + this.balance + "\n");
+
     }
 
     public synchronized void deposit(int amount) {
-        try {
-            System.out.println("Amount is being deposited...");
-            this.balance = this.balance + amount;
-            System.out.println("Amount deposited: " + amount + "\n");
-            wait(1000);
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            notifyAll();
-        }
+
+        System.out.println("Amount is being deposited...");
+        this.balance = this.balance + amount;
+        System.out.println("Amount deposited: " + amount + "\n");
+//        wait(1000);
+        notifyAll();
     }
 
 }
@@ -64,12 +55,20 @@ class Drawer extends Thread {
 
     public void run() {
         int[] withdrawals = {100, 1500, 600, 2000};
-        try {
-            for (int amount : withdrawals) {
+
+        for (int amount : withdrawals) {
+            try {
                 account.withdraw(amount);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+                return;
+            }
         }
     }
 }
@@ -82,13 +81,16 @@ class Depositor extends Thread {
     }
 
     public void run() {
-        int[] deposits = {200, 1000, 600, 2000, 5000};
-        try {
-            for (int amount : deposits) {
-                account.deposit(amount);
+        int[] deposits = {200, 1100, 600, 2000, 5000};
+        for (int amount : deposits) {
+            account.deposit(amount);
+
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+                return;
             }
-        } catch (Exception e) {
-            throw new RuntimeException(e);
         }
 
     }
