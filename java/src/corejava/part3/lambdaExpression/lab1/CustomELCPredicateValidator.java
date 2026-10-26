@@ -26,7 +26,6 @@ public class CustomELCPredicateValidator {
         validate(age, ar);
 
 
-
     }
 }
 
