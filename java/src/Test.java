@@ -1,16 +1,17 @@
-import java.sql.SQLException;
+import java.util.Scanner;
 
 public class Test {
 
     static void main(String[] args) {
 
+        Scanner sc = new Scanner(System.in);
+        System.out.println(Integer.parseInt("01"));
+
     }
 }
 
-
-
 class A {
-    private  void printHi () {
+    private void printHi() {
         System.out.println("Hi");
     }
 
@@ -19,7 +20,7 @@ class A {
     }
 }
 
-class  B extends  A {
+class B extends A {
 
     public void printHi() {
         System.out.println("HELLO");

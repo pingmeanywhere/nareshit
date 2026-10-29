@@ -1,5 +1,8 @@
 package corejava.part3.collections.lecture2;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Stack;
 import java.util.Vector;
 
 public class ElementsGreaterThanTarget {
@@ -14,8 +17,8 @@ public class ElementsGreaterThanTarget {
         v.add(50);
         v.add(97);
 
-        for(Integer i : v) {
-            if(i >= 35) {
+        for (Integer i : v) {
+            if (i >= 35) {
                 System.out.println(i + " is greater than 35.");
             }
         }
