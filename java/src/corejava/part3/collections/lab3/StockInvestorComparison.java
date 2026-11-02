@@ -7,12 +7,7 @@ public class StockInvestorComparison {
     static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-//        Capital of Investor 1
-//        Shares of Investor 1
-//        Selling Price per Share 1
-//        Capital of Investor 2
-//        Shares of Investor 2
-//        Selling Price per Share 2
+
 
         int capitalInvestor1 = (int) Integer.valueOf(sc.nextLine());
         int shareInvestor1 = (int) Integer.valueOf(sc.nextLine());
