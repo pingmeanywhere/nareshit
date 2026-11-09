@@ -13,13 +13,19 @@ public class ListIteratorObject {
 
         ListIterator<Integer> vlt = v.listIterator();
 
+
+
         while (vlt.hasNext()) {
-            System.out.println( vlt.next());
+            System.out.println(vlt.next());
         }
+
+        System.out.println(v);
 
         while (vlt.hasPrevious()) {
             System.out.println(vlt.previous());
         }
+
+
 
         /*
             -> Introduced in 1.0
