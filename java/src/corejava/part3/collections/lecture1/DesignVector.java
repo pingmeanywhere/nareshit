@@ -10,13 +10,8 @@ public class DesignVector {
 
         mv.add(10);
         mv.add(20);
-        mv.add(30);
-        mv.add(40);
-        mv.add(50);
-        mv.add(60);
 
         System.out.println(mv);
-
     }
 }
 
