@@ -1,4 +1,4 @@
-package corejava.part3.collections.lecture17;
+package corejava.part3.lambdaExpression.lab2;
 
 import java.util.Scanner;
 import java.util.function.Predicate;
